@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Data API</title>
+</head>
+<body>
+    <h1>Weather Data API</h1>
+
+    <p>Access examples (replace IP with your server's external IP):</p>
+
+    <ul>
+        <li>
+            One station, one date:
+            <a href="/api/v1/10/1992-05-19">/api/v1/10/1992-05-19</a>
+        </li>
+        <li>
+            One station, one year:
+            <a href="/api/v1/yearly/10/1992">/api/v1/yearly/10/1992</a>
+        </li>
+        <li>
+            All data for one station:
+            <a href="/api/v1/10">/api/v1/10</a>
+        </li>
+    </ul>
+
+    <h2>Available Stations:</h2>
+    {{ data | safe }}
+</body>
+</html>

@@ -25,7 +25,8 @@ jobs:
           libglib2.0-dev \
           pkg-config \
           cmake \
-          libcurl4-openssl-dev
+          libcurl4-openssl-dev \
+          libcairo2-dev
 
     - name: Install Python dependencies
       run: |

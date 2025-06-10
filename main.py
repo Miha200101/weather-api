@@ -1,11 +1,12 @@
 from flask import Flask, render_template, jsonify
 import mysql.connector
+import pandas as pd
 
 app = Flask(__name__)
 
 conn = mysql.connector.connect(
-    host="35.222.234.235",
-    user="admin",
+    host="localhost",
+    user="root",
     password="Myky2001",
     database="weather_db"
 )
@@ -15,7 +16,8 @@ cursor = conn.cursor(dictionary=True)
 def home():
     cursor.execute("SELECT staid, staname FROM stations")
     stations = cursor.fetchall()
-    return render_template("home.html", data=stations)
+    df = pd.DataFrame(stations)
+    return render_template("home.html", data=df[["staid", "staname"]].to_html(index=False))
 
 @app.route("/api/v1/<station>/<date>")
 def api(station, date):
